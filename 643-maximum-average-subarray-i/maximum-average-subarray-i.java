@@ -10,6 +10,8 @@ class Solution {
         for(int i =0;i<k;i++){
             currentSum = currentSum+nums[i];
         }
+        // for the edge cases if our subarray has n and k is also n then we need to put the value 
+        // what if that very first window has largest sum of all 
         bestSum = currentSum;
         for(int i = k ;i<n;i++){
             currentSum = currentSum - nums[i-k] + nums[i];
