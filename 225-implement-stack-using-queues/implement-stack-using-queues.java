@@ -9,17 +9,43 @@ class MyStack {
     }
     
     public int pop() {
-       return myDeck.pollLast();
+        Deque<Integer> myOutDeck = new ArrayDeque<>();
+        int temp = 0;
+        while(!myDeck.isEmpty()){
+            if(myDeck.size()==1){
+                temp = myDeck.pollFirst();
+                break;
+            }
+            myOutDeck.offerLast(myDeck.pollFirst());
+        }
+        while(!myOutDeck.isEmpty()){
+            myDeck.offerLast(myOutDeck.pollFirst());
+        }
+
+
+       return temp;
     }
     
     public int top() {
-        return myDeck.peekLast();
+        Deque<Integer> myOutDeck = new ArrayDeque<>();
+        int temp = 0;
+        while(!myDeck.isEmpty()){
+            if(myDeck.size()==1){
+                temp = myDeck.peekFirst();
+            }
+            myOutDeck.offerLast(myDeck.pollFirst());
+        }
+        while(!myOutDeck.isEmpty()){
+            myDeck.offerLast(myOutDeck.pollFirst());
+        }
+        return temp;
     }
     
     public boolean empty() {
         return myDeck.isEmpty();
     }
 }
+
 
 /**
  * Your MyStack object will be instantiated and called as such:
