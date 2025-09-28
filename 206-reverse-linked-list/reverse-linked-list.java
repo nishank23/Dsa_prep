@@ -10,38 +10,13 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode reversedList = null;
+        ListNode rev = null;
         while(head!=null){
             ListNode temp = head.next;
-            //reversedList.next = head;
-            head.next = reversedList;
-            reversedList = head;
-
+            head.next=rev;
+            rev = head;
             head = temp;
         }
-
-        return reversedList;
-
+        return rev;
     }
-    // public ListNode recursion(ListNode head){
-
-    // }
 }
-
-
-
-
-
-
-/*
-ListNode prev = null;
-        while(head!=null){
-            ListNode next_node = head.next;
-            head.next=prev;
-            prev=head;
-            head = next_node;
-        }
-        return prev;
-
-
- */       
