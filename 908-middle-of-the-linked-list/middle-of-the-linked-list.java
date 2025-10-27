@@ -16,10 +16,10 @@ class Solution {
          curr =curr.next;
          size++;
         }
-        int index = (size/2);
-        while(index!=0) {
+        size = (size/2);
+        while(size!=0) {
             head = head.next;
-            index--;
+            size--;
         }
 
         return head;
