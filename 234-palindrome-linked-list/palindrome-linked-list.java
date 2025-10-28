@@ -38,15 +38,6 @@ class Solution {
             prev2 = fast;
             fast = temp;
         }
-
-
-
-
-
-        System.out.println("VALUE OF SLOW POINTER "+slow.val);
-
-        System.out.println("VALUE OF FAST POINTER "+prev2.val);
-
         while(prev2!=null){
             if(prev2.val!=slow.val){
                 return false;
