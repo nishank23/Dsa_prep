@@ -17,7 +17,6 @@ class Solution {
          size++;
         }
         size = (size/2);
-        System.out.println("Size of the current list "+size);
         while(size!=0) {
             head = head.next;
             size--;
