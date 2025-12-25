@@ -9,39 +9,28 @@
  * }
  */
 class Solution {
-
     public int[] nextLargerNodes(ListNode head) {
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
-        ListNode curr = head;
-
-        while (curr != null) {
-            if (curr.next != null) {
-                ListNode greater = curr.next;
-                while (greater!=null && curr.val >= greater.val) {
+        ArrayList<Integer> myArrayList = new ArrayList<>();
+        while(head!=null){
+            if(head.next!=null){
+                ListNode greater = head.next;
+                while(greater!=null && greater.val<=head.val){
                     greater = greater.next;
                 }
                 if(greater!=null){
-                    arrayList.add(greater.val);
-                    }
-                else{
-                    arrayList.add(0);
-                    }
-                
+                    myArrayList.add(greater.val);
+                }else{
+                    myArrayList.add(0);
+                }
             }else{
-                arrayList.add(0);
+                myArrayList.add(0);
             }
-
-
-
-            curr = curr.next;
-        }
-
-
-        int[] ans =new int[arrayList.size()];
-        for(int i =0;i<arrayList.size();i++){
-            ans[i] = arrayList.get(i);
+            head=head.next;
+        } 
+        int[] ans = new int[myArrayList.size()];
+        for(int i =0;i<myArrayList.size();i++){
+            ans[i] = myArrayList.get(i);
         }
         return ans;
-
     }
 }
