@@ -1,27 +1,21 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        int zeroes = 0;
-        int prod = 1;
+        int n = nums.length;
+        int[] res = new int[n];
+        int[] prefix = new int[n];
+        int[] suffix = new int[n];
+        prefix[0] = 1;
+        suffix[n-1] = 1;
+        for(int i = 1;i<n;i++){
+            prefix[i] = prefix[i-1] * nums[i-1];
+        }
 
-        for(int i =0;i<nums.length;i++){
-            if(nums[i]==0){
-                zeroes++;
-            }else{
-                prod *= nums[i];
-            }
+        for(int i = n-2;i>=0;i--){
+            suffix[i] = nums[i+1] * suffix[i+1];
         }
-        if(zeroes>1){
-            return new int[nums.length];
-        }
-        int[] res = new int[nums.length];
-        for(int i =0;i<nums.length;i++){
-            if(zeroes>0){
-                res[i]=nums[i]==0?prod:0;
-            }else{
-                res[i]=prod/nums[i];
-            }
+        for(int i =0;i<n;i++){
+            res[i] = prefix[i] * suffix[i];
         }
         return res;
-
     }
 }
