@@ -7,24 +7,29 @@ class Solution {
         
     }
     private int[] minMax(int[] nums){
-        if(nums.length==1){
-            return nums;
-        }
-
         int n = nums.length;
         boolean isLastMin = false;
         int[] newArr = new int[n/2];
         int j=0;
-        for(int i =0;i<n;i=i+2){
-            if(!isLastMin){
-                newArr[j] = Math.min(nums[i],nums[i+1]);
-                isLastMin = true;
+        // for(int i =0;i<n;i=i+2){
+        //     if(!isLastMin){
+        //         newArr[j] = Math.min(nums[i],nums[i+1]);
+        //         isLastMin = true;
+        //     }else{
+        //         newArr[j] = Math.max(nums[i],nums[i+1]);
+        //         isLastMin = false;
+        //     }
+        //     j++;
+        // }
+        for(int i = 0 ;i<n/2;i++){
+            if(i%2==0){
+                newArr[i] = Math.min(nums[i*2],nums[(i*2)+1]);
             }else{
-                newArr[j] = Math.max(nums[i],nums[i+1]);
-                isLastMin = false;
+                newArr[i] = Math.max(nums[i*2],nums[(i*2)+1]);
             }
-            j++;
         }
+
+
         return newArr;
     }
 }
