@@ -1,20 +1,17 @@
 class Solution {
-      public List<Integer> majorityElement(int[] nums) {
-        List<Integer> myElements  = new ArrayList<>();
-        HashMap<Integer , Integer > hashMap = new HashMap<>();
-        int freq = nums.length / 3;
-       
-        for(int num :nums){
-            hashMap.put(num,(hashMap.getOrDefault(num,0))+1);
+    public List<Integer> majorityElement(int[] nums) {
+        List<Integer> arrList = new ArrayList<>();
+        HashMap<Integer,Integer> myHashMap = new HashMap<>();
+        int n = nums.length;
+        for(int num:nums){
+            myHashMap.put(num,myHashMap.getOrDefault(num,0)+1);
         }
-        for(Integer key : hashMap.keySet()){
-            int val = hashMap.get(key);
-            if(val>freq){
-                myElements.add(key);
+        for(int key:myHashMap.keySet()){
+            int val = myHashMap.get(key);
+            if(val > n/3){
+                arrList.add(key);
             }
         }
-
-
-        return myElements;
+        return arrList;
     }
 }
